@@ -11,24 +11,21 @@ function ReadLater() {
 
   return (
     <div>
-      <Container
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "15px",
-          margin: "10px auto",
-        }}
-      >
+      
         {readLater.length > 0 ? (
-          <Grid2 container spacing={2}>
+           <Grid2 container 
+          
+           spacing={2}
+           m={2}
+           alignItems="center"
+           justifyContent="center"
+           >
             {readLater.map((data, index) => {
               return (
                 <Grid2 item xs={3} key={index}>
                   <NewsCard data={data}
-                  displayFavoriteBtn={false}
-                  displayReadLaterBtn={false} />
+                  displayFavoriteBtn={true}
+                  displayReadLaterBtn={true} />
                 </Grid2>
               );
             })}
@@ -38,7 +35,7 @@ function ReadLater() {
             no read later added
           </Alert>
         )}
-      </Container>
+     
     </div>
   );
 }

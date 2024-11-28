@@ -1,18 +1,13 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect,useCallback } from "react";
 import NewsCard from "../components/NewsCard";
 import { useDispatch, useSelector } from 'react-redux';
-import { setNews , addFavorite} from "../Redux/newsSlice"
-import { Container, Grid2 } from "@mui/material";
+import { setNews} from "../Redux/newsSlice"
+import { Grid2 } from "@mui/material";
 import { CircularProgress } from "@mui/material";
 
 function Home() {
   const dispatch = useDispatch();
   const news = useSelector(state => state.news.allNews);
-
- 
-
-  // Memoize the toggle actions
-  
   const getNews = useCallback(() => {
     fetch(`https://newsapi.org/v2/everything?q=Apple&sortBy=popularity&apiKey=e29c9dac114441be9cd5fd9f84b3f63f`)
       .then(res => res.json())
@@ -35,20 +30,25 @@ function Home() {
   }, [getNews]);
 
   return (
-    
-      <Container
-      maxWidth="xlg"
-      alignItems="center"
-      justify="center"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-          margin:"30px auto 30px auto",
-        }}
-      >
+    // <Container 
+    // sx={{
+    //   display: "flex",
+    //   flexDirection: "column",
+      
+    //   margin:"30px auto",
+    //   alignItems:"center",
+    //   justifyContent:"center"
+    // }}>
+    //   <Container >
+    <>
         {news.length > 0 ? (
-          <Grid2 container spacing={2}>
+          <Grid2 container 
+          
+  spacing={2}
+ m={2}
+  alignItems="center"
+  justifyContent="center"
+  >
             {news.map((data) => (
               <Grid2 item xs={12} sm={6} md={3} key={data.id}>
                 <NewsCard
@@ -60,9 +60,11 @@ function Home() {
             ))}
           </Grid2>
         ) : (
-          <CircularProgress size={70} sx={{ marginTop: "30vh" }} />
+          <CircularProgress size={70} sx={{ margin: "30vh 50vw" }} />
         )}
-      </Container>
+        </>
+      // </Container>
+      // </Container>
  
   );
 }

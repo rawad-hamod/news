@@ -35,18 +35,18 @@ function NewsCard({ data, displayFavoriteBtn, displayReadLaterBtn }) {
       if (!readLater.some((item) => item.id === newsItem.id)) {
         dispatch(addReadLater(newsItem));
       } else {
-        removeReadLater(removeReadLater(newsItem.id));
+        dispatch(removeReadLater(newsItem.id));
       }
     }
   }
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: "345px" ,height:"500px", position:"relative"}}>
       <CardHeader>
-        <Typography variant="body1" color="secondary">
+        <Typography variant="body1">
           {data.author}
         </Typography>
-        <Typography variant="body1" color="secondary">
-          {data.author}
+        <Typography variant="body1" >
+          {data.publishedAt}
         </Typography>
       </CardHeader>
 
@@ -59,17 +59,17 @@ function NewsCard({ data, displayFavoriteBtn, displayReadLaterBtn }) {
       <CardContent>
         <Typography
           gutterBottom
-          variant="body1"
+          variant="h6"
           component="div"
-          sx={{ fontWight: "bold" }}
+         
         >
           {data.title}
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {data.descrition}
+        <Typography variant="body2" sx={{ color: "text.secondary" , maxHeight:150 , overflow:"clip"}}>
+          {data.description}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{position:"absolute" , bottom:"15px"}}>
         <Link href={data.url}>
           <Button size="small" variant="contained">
             Learn More

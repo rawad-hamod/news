@@ -1,4 +1,4 @@
-import { Alert, Container, Grid2 } from "@mui/material";
+import { Alert,  Grid2 } from "@mui/material";
 import React from "react";
 import {  useSelector } from "react-redux";
 
@@ -6,29 +6,26 @@ import NewsCard from "../components/NewsCard";
 function Favorites() {
   const favorites = useSelector((state) => state.news.favorites);
   
-
+console.log(favorites)
   
 console.log(favorites[0])
   return (
     <div>
-      <Container
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "15px",
-          margin: "10px auto",
-        }}
-      >
+      
         {favorites.length > 0 ? (
-          <Grid2 container spacing={2}>
+           <Grid2 container 
+           m={2}
+           spacing={2}
+          
+           alignItems="center"
+           justifyContent="center"
+           >
             {favorites.map((data, index) => {
               return (
                 <Grid2 item xs={3} key={index}>
                   <NewsCard data={data} 
-                  displayFavoriteBtn={false}
-                  displayReadLaterBtn={false}/>
+                  displayFavoriteBtn={true}
+                  displayReadLaterBtn={true}/>
                 </Grid2>
               );
             })}
@@ -38,7 +35,7 @@ console.log(favorites[0])
             no favorites added
           </Alert>
         )}
-      </Container>
+    
     </div>
   );
 }

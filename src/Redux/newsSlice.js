@@ -3,6 +3,7 @@ const initialState = {
   allNews: [],
   favorites: [],
   readLater: [],
+  
 };
 const newsSlice = createSlice({
   name: "news",
