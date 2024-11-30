@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <HashRouter base="/news">
+    <HashRouter>
     <Container>
       <NavBar/>
     </Container>
