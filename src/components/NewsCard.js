@@ -15,11 +15,11 @@ import {
   addReadLater,
   removeReadLater,
 } from "../Redux/newsSlice";
-
-function NewsCard({ data, displayFavoriteBtn, displayReadLaterBtn }) {
+function NewsCard({ data }) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.news.favorites);
   const readLater = useSelector((state) => state.news.readLater);
+
 
   function toggleFavorites(newsItem, e) {
     if (e.target !== null) {
@@ -29,7 +29,9 @@ function NewsCard({ data, displayFavoriteBtn, displayReadLaterBtn }) {
         dispatch(removeFavorite(newsItem.id));
       }
     }
-  }
+  };
+  
+
   function toggleReadLater(newsItem, e) {
     if (e.target !== null) {
       if (!readLater.some((item) => item.id === newsItem.id)) {
@@ -71,32 +73,34 @@ function NewsCard({ data, displayFavoriteBtn, displayReadLaterBtn }) {
       </CardContent>
       <CardActions sx={{position:"absolute" , bottom:"15px"}}>
         <Link href={data.url}>
-          <Button size="small" variant="contained">
-            Learn More
+          <Button size="small" variant="contained" >
+           read more
           </Button>
         </Link>
-        {displayReadLaterBtn=== true && (
+        
           <Button
             size="small"
             variant="contained"
+            
             onClick={(e) => {
               toggleReadLater(data, e);
             }}
           >
-            Read later
+          readLater
           </Button>
-        )}
-        {displayFavoriteBtn ===true && (
+       
+        
           <Button
             size="small"
             variant="contained"
+           
             onClick={(e) => {
               toggleFavorites(data, e);
             }}
           >
-            favorites
+          favorites
           </Button>
-        )}
+        
       </CardActions>
     </Card>
   );

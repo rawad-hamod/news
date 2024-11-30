@@ -24,8 +24,7 @@ function ReadLater() {
               return (
                 <Grid2 item xs={3} key={index}>
                   <NewsCard data={data}
-                  displayFavoriteBtn={true}
-                  displayReadLaterBtn={true} />
+                  />
                 </Grid2>
               );
             })}

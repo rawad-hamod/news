@@ -30,16 +30,6 @@ function Home() {
   }, [getNews]);
 
   return (
-    // <Container 
-    // sx={{
-    //   display: "flex",
-    //   flexDirection: "column",
-      
-    //   margin:"30px auto",
-    //   alignItems:"center",
-    //   justifyContent:"center"
-    // }}>
-    //   <Container >
     <>
         {news.length > 0 ? (
           <Grid2 container 
@@ -48,9 +38,10 @@ function Home() {
  m={2}
   alignItems="center"
   justifyContent="center"
+  pb={20}
   >
             {news.map((data) => (
-              <Grid2 item xs={12} sm={6} md={3} key={data.id}>
+              <Grid2 item xs={12} sm={6} md={3} key={data.id} >
                 <NewsCard
                   data={data}
                   displayFavoriteBtn={true}
@@ -63,8 +54,7 @@ function Home() {
           <CircularProgress size={70} sx={{ margin: "30vh 50vw" }} />
         )}
         </>
-      // </Container>
-      // </Container>
+      
  
   );
 }

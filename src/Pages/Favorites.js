@@ -5,10 +5,6 @@ import {  useSelector } from "react-redux";
 import NewsCard from "../components/NewsCard";
 function Favorites() {
   const favorites = useSelector((state) => state.news.favorites);
-  
-console.log(favorites)
-  
-console.log(favorites[0])
   return (
     <div>
       
@@ -16,7 +12,7 @@ console.log(favorites[0])
            <Grid2 container 
            m={2}
            spacing={2}
-          
+           pb={20}
            alignItems="center"
            justifyContent="center"
            >
@@ -24,8 +20,8 @@ console.log(favorites[0])
               return (
                 <Grid2 item xs={3} key={index}>
                   <NewsCard data={data} 
-                  displayFavoriteBtn={true}
-                  displayReadLaterBtn={true}/>
+                  
+                  />
                 </Grid2>
               );
             })}
