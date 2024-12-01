@@ -10,7 +10,7 @@ function Home() {
   const news = useSelector((state) => state.news.allNews);
   const getNews = useCallback(() => {
     fetch(
-      `https://newsapi.org/v2/everything?q=Apple&sortBy=popularity&apiKey=e29c9dac114441be9cd5fd9f84b3f63f`
+      `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=Apple&sortBy=popularity&apiKey=e29c9dac114441be9cd5fd9f84b3f63f`
     )
       .then((res) => res.json())
       .then((data) => {
