@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setNews } from "../Redux/newsSlice";
 import { Grid2 } from "@mui/material";
 import { CircularProgress } from "@mui/material";
-
+// https://newsapi.org/v2/everything?q=Apple&sortBy=popularity&apiKey=e29c9dac114441be9cd5fd9f84b3f63f
 function Home() {
   const dispatch = useDispatch();
   const news = useSelector((state) => state.news.allNews);
@@ -14,16 +14,14 @@ function Home() {
     )
       .then((res) => res.json())
       .then((data) => {
-        const enrichedNews = data.articles.map((newsItem, index) => ({
-          ...newsItem,
-          isReadLater: false,
-          isFavorite: false,
-          id: index,
-        }));
-        dispatch(setNews(enrichedNews.reverse()));
-        console.log("iread get news");
-      })
-      .catch((err) => console.error("Error fetching news:", err));
+        if (data && data.articles) {
+        dispatch(setNews(data.articles.reverse()))
+      } else {
+        console.error("No articles found in the response");
+        setNews([]); // Set an empty array if articles is not found
+      } 
+  })
+  .catch((err) => console.error("Error fetching news:", err));
   }, [dispatch]);
 
   useEffect(() => {

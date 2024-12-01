@@ -55,7 +55,7 @@ function NewsCard({ data }) {
       <CardMedia
         component="img"
         sx={{ height: 200 }}
-        image={data.urlToImage}
+        image={data.image}
         title="green iguana"
       />
       <CardContent>
