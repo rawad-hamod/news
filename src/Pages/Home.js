@@ -10,17 +10,12 @@ function Home() {
   const news = useSelector((state) => state.news.allNews);
   const getNews = useCallback(() => {
     fetch(
-      `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=Apple&sortBy=popularity&apiKey=e29c9dac114441be9cd5fd9f84b3f63f`
+      `https://api.thenewsapi.com/v1/news/top?api_token=GOMV8kh9CnGmtNkQ8WCfdGvP5WZCi7mEtGXpyOxd&locale=us&limit=3`
     )
       .then((res) => res.json())
-      .then((data) => {
-        if (data && data.articles) {
-        dispatch(setNews(data.articles.reverse()))
-      } else {
-        console.error("No articles found in the response");
-        setNews([]); // Set an empty array if articles is not found
-      } 
-  })
+      .then((data) => 
+        dispatch(setNews(data.data)))
+ 
   .catch((err) => console.error("Error fetching news:", err));
   }, [dispatch]);
 
@@ -40,7 +35,7 @@ function Home() {
           pb={20}
         >
           {news.map((data) => (
-            <Grid2 item xs={12} sm={6} md={3} key={data.id}>
+            <Grid2 item xs={12} sm={6} md={3} key={data.uuid}>
               <NewsCard
                 data={data}
                

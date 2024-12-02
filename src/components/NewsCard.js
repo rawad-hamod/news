@@ -23,10 +23,10 @@ function NewsCard({ data }) {
 
   function toggleFavorites(newsItem, e) {
     if (e.target !== null) {
-      if (!favorites.some((item) => item.id === newsItem.id)) {
+      if (!favorites.some((item) => item.id === newsItem.uuid)) {
         dispatch(addFavorite(newsItem));
       } else {
-        dispatch(removeFavorite(newsItem.id));
+        dispatch(removeFavorite(newsItem.uuid));
       }
     }
   };
@@ -44,18 +44,18 @@ function NewsCard({ data }) {
   return (
     <Card sx={{ width: "345px" ,height:"500px", position:"relative"}}>
       <CardHeader>
-        <Typography variant="body1">
-          {data.author}
-        </Typography>
+        {/* <Typography variant="body1">
+          {data.categories.split(",")}
+        </Typography> */}
         <Typography variant="body1" >
-          {data.publishedAt}
+          {data.published_at}
         </Typography>
       </CardHeader>
 
       <CardMedia
         component="img"
         sx={{ height: 200 }}
-        image={data.image}
+        image={data.image_url}
         title="green iguana"
       />
       <CardContent>

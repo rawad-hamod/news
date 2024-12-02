@@ -1,7 +1,7 @@
 {
   "name": "news",
   "homepage": "https://rawad-hamod.github.io/news/",
-  "proxy": "https://newsapi.org",
+  
   "version": "0.1.0",
   "private": true,
   "dependencies": {
